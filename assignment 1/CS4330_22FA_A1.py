@@ -29,8 +29,9 @@ def plot_vec(p1_,p2_,c):
 # deg is degree for rotation
 def rotate_vec(p1_,p2_,deg=0,c="blue"):
     rad = (np.pi * deg) / 180
-    rot = np.array([[np.cos(rad), np.sin(rad)], [np.sin(rad), np.cos(rad)]])
+    rot = np.array([[np.cos(rad), np.sin(rad)], [-np.sin(rad), np.cos(rad)]])
     p2_ = np.dot(rot, p2_)
+    plot_vec(p1_, p2_, c)
     #pass
 
 
@@ -43,11 +44,16 @@ def rotate_vec(p1_,p2_,deg=0,c="blue"):
 # c2 is the color for short vector
 # note that this function contains the loop that calls rotate_vec
 def animate_vec(p1_,p2_,p3_,c1,c2,n):
-    #
-    #   add your code
-    #
-    # comment out pass when implemented
-    pass
+    for d in range((360*n) + 1):
+        plt.clf()
+        plot_vec(p1_, p2_, c1)
+        plot_vec(p1_, p3_, c2)
+        init_plot()
+        rotate_vec(p1_, p2_, d, c1)        
+        if d % 360 == 0:
+            rotate_vec(p1_, p3_, d / 30, c2)
+        plt.pause(0.0000000000000000000000000000001)
+    #pass
 
 
 if __name__ == "__main__":
@@ -59,8 +65,10 @@ if __name__ == "__main__":
     init_plot()
     plot_vec(p1,p2,"blue")
     plot_vec(p1,p3,"red")
+    
+
 
     # uncomment the following animate_vec function once implemented
-    #animate_vec(p1,p2,p3,"blue","red",12)
+    animate_vec(p1,p2,p3,"blue","red",12)
 
     plt.show()
