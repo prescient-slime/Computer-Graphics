@@ -28,11 +28,10 @@ def plot_vec(p1_,p2_,c):
 # p1_ is the origin point
 # deg is degree for rotation
 def rotate_vec(p1_,p2_,deg=0,c="blue"):
-    #
-    #   add your code
-    #
-    # comment out pass when implemented
-    pass
+    rad = (np.pi * deg) / 180
+    rot = np.array([[np.cos(rad), np.sin(rad)], [np.sin(rad), np.cos(rad)]])
+    p2_ = np.dot(rot, p2_)
+    #pass
 
 
 # animates the two vector rotations
