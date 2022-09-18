@@ -31,7 +31,7 @@ def rotate_vec(p1_,p2_,deg=0,c="blue"):
     rad = (np.pi * deg) / 180
     rot = np.array([[np.cos(rad), np.sin(rad)], [-np.sin(rad), np.cos(rad)]])
     p2_ = np.dot(rot, p2_)
-    plot_vec(p1_, p2_, c)
+    return p2_
     #pass
 
 
@@ -44,15 +44,17 @@ def rotate_vec(p1_,p2_,deg=0,c="blue"):
 # c2 is the color for short vector
 # note that this function contains the loop that calls rotate_vec
 def animate_vec(p1_,p2_,p3_,c1,c2,n):
-    for d in range((360*n) + 1):
+    i = 1
+    while i < ((360 * n) + 1):
         plt.clf()
-        plot_vec(p1_, p2_, c1)
-        plot_vec(p1_, p3_, c2)
         init_plot()
-        rotate_vec(p1_, p2_, d, c1)        
-        if d % 360 == 0:
-            rotate_vec(p1_, p3_, d / 30, c2)
+        if i % 360 == 0:
+            p3_ = rotate_vec(p1_, p3_, 30, c2)
+        p2_ = rotate_vec(p1_, p2_, 1, c1)
+        plot_vec(p1_, p2_, c1)
+        plot_vec(p1_, p3_, c2) 
         plt.pause(0.0000000000000000000000000000001)
+        i += 1
     #pass
 
 
