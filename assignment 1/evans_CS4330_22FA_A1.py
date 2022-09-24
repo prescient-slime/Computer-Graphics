@@ -1,8 +1,8 @@
 # CS 4330
 # FALL 2022
 # Assignment 1
-# Name:
-# Buff-id:
+# Name:Zachary T. Evans
+# Buff-id:1008916
 
 import numpy as np
 import matplotlib.pyplot as plt
